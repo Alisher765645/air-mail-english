@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<title>Air Mail English — деловой тренажёр</title>
+<style>
+:root{
+  --navy:#152544;--navy2:#1f3a66;--cream:#f4efe2;--paper:#fbf8f1;
+  --red:#b5402c;--blue:#2c5fa8;--gold:#c79a3f;--green:#2e7d32;
+  --text:#1a1a1a;--gray:#666;--light:#e8e3d6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Inter,sans-serif;background:var(--cream);color:var(--text);min-height:100vh}
+/* HEADER */
+header{background:var(--navy);color:white;padding:14px 20px;display:flex;align-items:center;gap:14px}
+.stamp{width:52px;height:52px;border:3px solid var(--gold);border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-family:Georgia,serif;font-size:9px;font-weight:bold;color:var(--gold);
+  text-align:center;line-height:1.2;flex-shrink:0}
+.header-title h1{font-family:Georgia,serif;font-size:1.35rem;letter-spacing:2px}
+.header-title p{font-size:.72rem;opacity:.65;margin-top:2px}
+.stripe{height:6px;background:repeating-linear-gradient(90deg,var(--red) 0,var(--red) 10px,white 10px,white 20px,var(--blue) 20px,var(--blue) 30px)}
+/* NAV */
+nav{background:var(--navy2);position:sticky;top:0;z-index:100;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.nav-tabs{display:flex;min-width:max-content}
+.nav-tab{padding:11px 14px;color:rgba(255,255,255,.65);cursor:pointer;border:none;border-bottom:3px solid transparent;
+  font-size:.82rem;white-space:nowrap;background:none;transition:all .2s}
+.nav-tab:hover{color:white}
+.nav-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+/* MAIN */
+main{max-width:820px;margin:0 auto;padding:20px 14px}
+.tab-content{display:none}
+.tab-content.active{display:block}
+/* CARDS */
+.card{background:var(--paper);border-radius:8px;padding:18px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.09)}
+.card h2{font-family:Georgia,serif;color:var(--navy);margin-bottom:10px;font-size:1.1rem}
+.card h3{color:var(--navy2);margin-bottom:7px;font-size:.95rem}
+/* QUICK GRID */
+.quick-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
+.quick-card{background:var(--navy);color:white;border-radius:8px;padding:14px;cursor:pointer;
+  border:none;text-align:left;width:100%;transition:background .2s}
+.quick-card:hover{background:var(--navy2)}
+.quick-card .icon{font-size:1.4rem;margin-bottom:6px;display:block}
+.quick-card .qlabel{font-size:.75rem;opacity:.7}
+.quick-card .qtitle{font-weight:bold;font-size:.9rem}
+/* WORD CHIPS */
+.word-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:20px;
+  background:var(--cream);border:1px solid #ccc;margin:4px;cursor:pointer;font-size:.85rem;transition:all .2s}
+.word-chip:hover{border-color:var(--navy)}
+.word-chip.learning{background:var(--red);color:white;border-color:var(--red)}
+/* DICT WORDS IN TEXTS */
+.dict-word{border-bottom:1px dashed var(--blue);cursor:pointer;color:var(--blue)}
+.dict-word.learning{color:var(--red);border-bottom-color:var(--red)}
+/* PROGRESS */
+.progress-bar{height:8px;background:#ddd;border-radius:4px;overflow:hidden;margin:6px 0}
+.progress-fill{height:100%;background:var(--blue);border-radius:4px;transition:width .3s}
+/* BUTTONS */
+.btn{padding:8px 15px;border-radius:6px;border:none;cursor:pointer;font-size:.88rem;font-weight:500;transition:all .2s}
+.btn-primary{background:var(--navy);color:white}.btn-primary:hover{background:var(--navy2)}
+.btn-secondary{background:var(--cream);color:var(--navy);border:1px solid var(--navy)}.btn-secondary:hover{background:#e8e3d6}
+.btn-red{background:var(--red);color:white}.btn-gold{background:var(--gold);color:white}
+.btn-green{background:var(--green);color:white}.btn-sm{padding:3px 9px;font-size:.78rem}
+/* QUIZ */
+.quiz-option{display:block;width:100%;text-align:left;padding:9px 13px;margin:5px 0;border-radius:6px;
+  border:2px solid #ddd;background:white;cursor:pointer;font-size:.88rem;transition:all .2s}
+.quiz-option:hover{border-color:var(--blue)}
+.quiz-option.correct{border-color:var(--green);background:#e8f5e9}
+.quiz-option.wrong{border-color:var(--red);background:#ffebee}
+.quiz-option.show-correct{border-color:var(--green);background:#e8f5e9}
+/* BADGES */
+.badge{display:inline-block;padding:1px 7px;border-radius:12px;font-size:.7rem;font-weight:600;margin-left:6px}
+.badge-base{background:#e3f2fd;color:#1565c0}
+.badge-mid{background:#fff3e0;color:#e65100}
+/* TABLE */
+.verbs-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.verbs-table th{background:var(--navy);color:white;padding:7px 9px;text-align:left;position:sticky;top:42px}
+.verbs-table td{padding:6px 9px;border-bottom:1px solid var(--light)}
+.verbs-table tr:nth-child(even) td{background:var(--cream)}
+.verbs-table tr:hover td{background:#e8e3d6}
+/* MENTOR SCORES */
+.score-block{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.score-label{min-width:170px;font-size:.88rem;color:var(--gray)}
+.score-bar{flex:1}
+.score-val{min-width:38px;text-align:right;font-weight:bold;color:var(--navy)}
+.verdict-box{border-radius:8px;padding:14px;margin:14px 0;line-height:1.6}
+.verdict-good{background:#e8f5e9;border-left:4px solid var(--green)}
+.verdict-mid{background:#fff8e1;border-left:4px solid var(--gold)}
+.verdict-low{background:#ffebee;border-left:4px solid var(--red)}
+.verdict-none{background:#f5f5f5;border-left:4px solid #999}
+/* SPEAKING */
+.phrase-card{background:white;border:2px solid var(--light);border-radius:8px;padding:13px;margin-bottom:9px}
+.phrase-en{font-size:.97rem;font-weight:600;color:var(--navy);margin-bottom:3px}
+.phrase-ru{font-size:.83rem;color:var(--gray);margin-bottom:9px}
+.phrase-result{font-size:.82rem;margin-top:7px;color:var(--gray)}
+.phrase-best{font-weight:bold;color:var(--green)}
+/* COUNTERS */
+.counter-row{display:flex;gap:14px;margin-bottom:18px}
+.counter-box{flex:1;background:white;border-radius:8px;padding:13px;text-align:center;border:2px solid var(--light)}
+.counter-box .count{font-size:1.8rem;font-weight:bold;color:var(--navy)}
+.counter-box .clabel{font-size:.78rem;color:var(--gray)}
+.counter-box.known-box{border-color:var(--green)}
+.counter-box.learning-box{border-color:var(--red)}
+/* WORD TEST ITEM */
+.word-test-item{display:flex;align-items:center;justify-content:space-between;padding:7px 11px;
+  margin:4px 0;background:white;border-radius:6px;border:1px solid var(--light)}
+.word-test-item.known{background:#e8f5e9}
+.word-test-item.learning-item{background:#ffebee}
+.word-test-btns{display:flex;gap:5px}
+/* DICT LIST */
+.dict-item{display:flex;justify-content:space-between;align-items:center;padding:9px 13px;
+  background:white;border-radius:6px;margin-bottom:5px;border:1px solid var(--light)}
+/* SEARCH */
+.search-input{width:100%;padding:9px 13px;border:2px solid #ddd;border-radius:6px;font-size:.88rem;margin-bottom:14px}
+.search-input:focus{outline:none;border-color:var(--blue)}
+/* TEXT NAV */
+.text-nav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+.text-btn{padding:5px 11px;border-radius:20px;border:2px solid #ddd;background:white;cursor:pointer;font-size:.78rem;transition:all .2s}
+.text-btn.active{border-color:var(--navy);background:var(--navy);color:white}
+.text-btn.viewed::after{content:'✓';margin-left:4px;color:var(--green)}
+.text-btn.active.viewed::after{color:var(--gold)}
+/* DIALOGUE */
+.dialogue p{margin:6px 0;line-height:1.65}
+.speaker-a{font-weight:600;color:var(--navy)}
+.speaker-b{font-weight:600;color:var(--red)}
+/* EMPTY STATE */
+.empty-state{text-align:center;color:var(--gray);padding:36px 20px}
+.empty-state .icon{font-size:2.6rem;margin-bottom:10px}
+/* VOCAB NAV */
+.vocab-nav{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.vocab-nav .set-title{flex:1;text-align:center;font-weight:bold;color:var(--navy)}
+/* AI */
+.ai-result{background:linear-gradient(135deg,#f0f4ff,#f9f0ff);border-radius:8px;padding:15px;
+  margin-top:14px;border:1px solid #c5cae9;line-height:1.75}
+.api-key-wrap input{width:100%;padding:7px 11px;border:1px solid #ddd;border-radius:6px;
+  font-size:.83rem;margin-bottom:7px;font-family:monospace}
+/* GRAMMAR NAV */
+.grammar-nav{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+.stat-chip{font-size:.72rem;padding:1px 7px;border-radius:12px;margin-left:6px}
+.stat-ok{background:#c8e6c9;color:#1b5e20}
+.stat-fail{background:#ffcdd2;color:#b71c1c}
+/* LOADING */
+@keyframes spin{to{transform:rotate(360deg)}}
+.spinner{display:inline-block;width:18px;height:18px;border:3px solid #ddd;border-top-color:var(--blue);
+  border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px}
+/* RECORDING */
+@keyframes pulse{0%,100%{border-color:var(--gold)}50%{border-color:var(--red)}}
+.recording{animation:pulse .8s infinite;border-color:var(--gold)!important}
+/* VOCAB LEVEL SECTIONS */
+.level-section{margin-bottom:22px}
+.level-section h3{background:var(--navy);color:white;padding:7px 12px;border-radius:6px 6px 0 0;margin:0}
+.level-section .level-words{background:white;border-radius:0 0 6px 6px;padding:10px}
+.vocab-estimate{background:var(--cream);border:2px solid var(--gold);border-radius:8px;padding:14px;text-align:center;margin-bottom:14px}
+.vocab-estimate .big{font-size:2rem;font-weight:bold;color:var(--navy)}
+.vocab-estimate .sub{font-size:.82rem;color:var(--gray)}
+@media(max-width:640px){
+  .quick-grid{grid-template-columns:1fr 1fr}
+  .score-label{min-width:120px;font-size:.8rem}
+  .counter-row{gap:8px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="stamp">AIR<br>MAIL<br>✈</div>
+  <div class="header-title">
+    <h1>AIR MAIL ENGLISH</h1>
+    <p>Деловой тренажёр · Казпочта · B1+</p>
+  </div>
+</header>
+<div class="stripe"></div>
+
+<nav>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showTab('home')">🏠 Сегодня</button>
+    <button class="nav-tab" onclick="showTab('vocab')">📚 Слова дня</button>
+    <button class="nav-tab" onclick="showTab('grammar')">📝 Грамматика</button>
+    <button class="nav-tab" onclick="showTab('texts')">💬 Тексты</button>
+    <button class="nav-tab" onclick="showTab('verbs')">🔄 Глаголы</button>
+    <button class="nav-tab" onclick="showTab('mydict')">⭐ Мой словарь</button>
+    <button class="nav-tab" onclick="showTab('vocabtest')">🎯 Тест словаря</button>
+    <button class="nav-tab" onclick="showTab('mentor')">🎓 Наставник</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ===== HOME ===== -->
+<div id="tab-home" class="tab-content active">
+  <div class="quick-grid">
+    <button class="quick-card" onclick="showTab('vocab')">
+      <span class="icon">📚</span>
+      <div class="qlabel">Тема дня</div>
+      <div class="qtitle" id="home-vocab-title">Слова дня</div>
+    </button>
+    <button class="quick-card" onclick="showTab('grammar')">
+      <span class="icon">📝</span>
+      <div class="qlabel">Грамматика</div>
+      <div class="qtitle" id="home-grammar-title">Правило дня</div>
+    </button>
+    <button class="quick-card" onclick="showTab('texts')">
+      <span class="icon">💬</span>
+      <div class="qlabel">Сценка</div>
+      <div class="qtitle">Тексты и диалоги</div>
+    </button>
+    <button class="quick-card" onclick="showTab('mentor')">
+      <span class="icon">🎓</span>
+      <div class="qlabel">Оценка</div>
+      <div class="qtitle">Наставник</div>
+    </button>
+  </div>
+
+  <div class="card">
+    <h2>⭐ Учу прямо сейчас</h2>
+    <div id="home-learning-preview"></div>
+  </div>
+
+  <div class="card">
+    <h2>📊 Прогресс сегодня</h2>
+    <div id="home-stats"></div>
+  </div>
+</div>
+
+<!-- ===== VOCAB ===== -->
+<div id="tab-vocab" class="tab-content">
+  <div class="card">
+    <div class="vocab-nav">
+      <button class="btn btn-secondary btn-sm" onclick="vocabPrev()">← Пред.</button>
+      <span class="set-title" id="vocab-set-title"></span>
+      <button class="btn btn-secondary btn-sm" onclick="vocabNext()">След. →</button>
+    </div>
+    <div id="vocab-progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="vocab-progress-fill" style="width:0%"></div></div>
+      <div style="font-size:.8rem;color:var(--gray)" id="vocab-progress-label"></div>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Слова набора</h2>
+    <p style="font-size:.83rem;color:var(--gray);margin-bottom:12px">Нажмите на слово, чтобы добавить его в «Учу» / убрать обратно</p>
+    <div id="vocab-words-grid"></div>
+  </div>
+</div>
+
+<!-- ===== GRAMMAR ===== -->
+<div id="tab-grammar" class="tab-content">
+  <div class="card">
+    <div class="grammar-nav">
+      <button class="btn btn-secondary btn-sm" onclick="grammarPrev()">← Пред.</button>
+      <span id="grammar-counter" style="font-size:.82rem;color:var(--gray)"></span>
+      <button class="btn btn-secondary btn-sm" onclick="grammarNext()">След. →</button>
+    </div>
+  </div>
+  <div id="grammar-topic-card"></div>
+</div>
+
+<!-- ===== TEXTS ===== -->
+<div id="tab-texts" class="tab-content">
+  <div class="card">
+    <div class="text-nav" id="text-nav"></div>
+  </div>
+  <div class="card" id="text-content"></div>
+</div>
+
+<!-- ===== VERBS ===== -->
+<div id="tab-verbs" class="tab-content">
+  <div class="card">
+    <h2>🔄 Неправильные глаголы (113)</h2>
+    <input class="search-input" type="text" placeholder="Поиск на английском или русском..." id="verb-search" oninput="filterVerbs()">
+    <div style="overflow-x:auto">
+      <table class="verbs-table">
+        <thead><tr><th>Base</th><th>Past</th><th>Participle</th><th>Перевод</th></tr></thead>
+        <tbody id="verb-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MY DICT ===== -->
+<div id="tab-mydict" class="tab-content">
+  <div class="card">
+    <h2>⭐ Мой словарь — «Учу»</h2>
+    <div id="mydict-content"></div>
+  </div>
+</div>
+
+<!-- ===== VOCAB TEST ===== -->
+<div id="tab-vocabtest" class="tab-content">
+  <div class="counter-row">
+    <div class="counter-box known-box">
+      <div class="count" id="vt-known-count">0</div>
+      <div class="clabel">✓ Знаю</div>
+    </div>
+    <div class="counter-box learning-box">
+      <div class="count" id="vt-learning-count">0</div>
+      <div class="clabel">✗ Учу</div>
+    </div>
+  </div>
+  <div class="vocab-estimate" id="vt-estimate" style="display:none">
+    <div class="big" id="vt-estimate-num">—</div>
+    <div class="sub">приблизительный общий словарный запас</div>
+  </div>
+  <div id="vt-hint" class="card" style="text-align:center;color:var(--gray);font-size:.9rem;padding:14px">
+    Отметьте слова ниже — вы сразу увидите оценку вашего словарного запаса.
+  </div>
+  <div id="vt-levels"></div>
+</div>
+
+<!-- ===== MENTOR ===== -->
+<div id="tab-mentor" class="tab-content">
+  <div class="card">
+    <h2>🎓 Оценка готовности к переговорам</h2>
+    <div id="mentor-scores"></div>
+    <div id="mentor-verdict"></div>
+  </div>
+
+  <div class="card">
+    <h2>🎙 Тренировка устной речи</h2>
+    <p style="font-size:.83rem;color:var(--gray);margin-bottom:14px">Нажмите «Говорить» и произнесите фразу вслух. Браузер сравнит вашу речь с образцом.</p>
+    <div id="speaking-phrases"></div>
+    <div id="speaking-support-msg" style="display:none" class="verdict-box verdict-none" style="margin-top:10px">
+      ⚠️ Ваш браузер не поддерживает распознавание речи. Для тренировки используйте Chrome на компьютере, или практикуйте фразы вслух самостоятельно.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🤖 ИИ-разбор (GLM)</h2>
+    <div class="api-key-wrap">
+      <label style="font-size:.83rem;color:var(--gray)">API-ключ GLM / Zhipu AI (хранится только в этом браузере, в коде не записан):<br><span style="font-size:.75rem">Получить ключ: <a href="https://open.bigmodel.cn" target="_blank">open.bigmodel.cn</a> → Console → API Keys</span></label>
+      <input type="password" id="api-key-input" placeholder="Вставьте ваш GLM API-ключ..." oninput="saveApiKey()" style="margin-top:6px">
+    </div>
+    <button class="btn btn-gold" onclick="getAiAnalysis()">✨ Получить ИИ-разбор</button>
+    <div id="ai-result"></div>
+  </div>
+</div>
+
+</main>
+
+<script>
+// ==================== DATA ====================
+
+const VOCAB_SETS = [
+  { title:"Казпочта и офис", words:[
+    {en:"shipment",ru:"отправление, груз"},
+    {en:"delivery",ru:"доставка"},
+    {en:"parcel",ru:"посылка"},
+    {en:"customs",ru:"таможня"},
+    {en:"tracking",ru:"отслеживание"},
+    {en:"invoice",ru:"счёт-фактура"},
+    {en:"dispatch",ru:"отправка, диспетчеризация"},
+    {en:"recipient",ru:"получатель"},
+    {en:"warehouse",ru:"склад"},
+    {en:"courier",ru:"курьер"}
+  ]},
+  { title:"Командировки", words:[
+    {en:"itinerary",ru:"маршрут, план поездки"},
+    {en:"departure",ru:"отправление, вылет"},
+    {en:"conference",ru:"конференция"},
+    {en:"agenda",ru:"повестка дня"},
+    {en:"colleague",ru:"коллега"},
+    {en:"negotiate",ru:"вести переговоры"},
+    {en:"budget",ru:"бюджет"},
+    {en:"deadline",ru:"крайний срок"},
+    {en:"reimbursement",ru:"возмещение расходов"},
+    {en:"presentation",ru:"презентация"}
+  ]},
+  { title:"Гостиница", words:[
+    {en:"reservation",ru:"бронирование"},
+    {en:"check-in",ru:"заселение"},
+    {en:"check-out",ru:"выезд"},
+    {en:"concierge",ru:"консьерж"},
+    {en:"amenities",ru:"удобства, услуги"},
+    {en:"receipt",ru:"квитанция, чек"},
+    {en:"complimentary",ru:"бесплатный (в подарок)"},
+    {en:"housekeeping",ru:"уборка номеров"},
+    {en:"room service",ru:"обслуживание в номере"},
+    {en:"lobby",ru:"вестибюль, холл"}
+  ]},
+  { title:"Аэропорт", words:[
+    {en:"terminal",ru:"терминал"},
+    {en:"boarding pass",ru:"посадочный талон"},
+    {en:"gate",ru:"выход на посадку"},
+    {en:"luggage",ru:"багаж"},
+    {en:"security check",ru:"досмотр безопасности"},
+    {en:"transit",ru:"транзит"},
+    {en:"delay",ru:"задержка"},
+    {en:"passport control",ru:"паспортный контроль"},
+    {en:"overhead bin",ru:"верхняя полка в самолёте"},
+    {en:"flight attendant",ru:"бортпроводник"}
+  ]},
+  { title:"Казахстан", words:[
+    {en:"steppe",ru:"степь"},
+    {en:"nomadic",ru:"кочевой"},
+    {en:"heritage",ru:"наследие"},
+    {en:"sovereign",ru:"суверенный"},
+    {en:"hospitable",ru:"гостеприимный"},
+    {en:"partnership",ru:"партнёрство"},
+    {en:"resources",ru:"ресурсы"},
+    {en:"landlocked",ru:"не имеющий выхода к морю"},
+    {en:"infrastructure",ru:"инфраструктура"},
+    {en:"bilateral",ru:"двусторонний"}
+  ]},
+  { title:"Логистика и e-commerce", words:[
+    {en:"fulfillment",ru:"выполнение заказа"},
+    {en:"supply chain",ru:"цепочка поставок"},
+    {en:"last-mile",ru:"доставка последней мили"},
+    {en:"marketplace",ru:"торговая площадка"},
+    {en:"return policy",ru:"политика возврата"},
+    {en:"inventory",ru:"запасы, инвентарь"},
+    {en:"freight",ru:"груз, грузоперевозки"},
+    {en:"cross-border",ru:"трансграничный"},
+    {en:"tracking number",ru:"трек-номер"},
+    {en:"logistics",ru:"логистика"}
+  ]}
+];
+
+const GRAMMAR_TOPICS = [
+  {title:"Артикли: a / an / the",level:"base",
+   rule:"Неопределённый артикль <b>a/an</b> используется при первом упоминании предмета или когда он один из многих. Определённый <b>the</b> — когда говорим о конкретном, уже известном предмете. Перед гласной звуком — <b>an</b>.",
+   examples:[
+     {en:"I received a parcel today. The parcel was from Germany.",ru:"Я получил посылку сегодня. Посылка была из Германии."},
+     {en:"Please sign an agreement before the meeting starts.",ru:"Пожалуйста, подпишите соглашение до начала встречи."}
+   ],
+   quiz:{q:"Выберите правильный вариант: 'Please give me ___ report from yesterday.'",opts:["a","an","the"],correct:2}},
+
+  {title:"Present Simple vs Present Continuous",level:"base",
+   rule:"<b>Present Simple</b> — регулярные действия и факты: I work, She sends. <b>Present Continuous</b> — действие прямо сейчас или временный процесс: I am working, They are negotiating.",
+   examples:[
+     {en:"We usually send parcels on Mondays.",ru:"Мы обычно отправляем посылки по понедельникам."},
+     {en:"Right now I am preparing a report for the meeting.",ru:"Прямо сейчас я готовлю отчёт к встрече."}
+   ],
+   quiz:{q:"Выберите правильную форму: 'She ___ a client right now — please don't disturb her.'",opts:["calls","is calling","called"],correct:1}},
+
+  {title:"Past Simple: правильные и неправильные глаголы",level:"base",
+   rule:"<b>Past Simple</b> описывает завершённые действия в прошлом. Правильные глаголы: добавить <b>-ed</b> (worked, delivered). Неправильные — выучить формы (sent, met, went).",
+   examples:[
+     {en:"We delivered 500 parcels yesterday.",ru:"Вчера мы доставили 500 посылок."},
+     {en:"The director met the foreign partners last week.",ru:"Директор встретил иностранных партнёров на прошлой неделе."}
+   ],
+   quiz:{q:"Выберите правильную форму: 'We ___ the shipment to Germany last Tuesday.'",opts:["send","sent","have sent"],correct:1}},
+
+  {title:"Present Perfect vs Past Simple",level:"mid",
+   rule:"<b>Present Perfect</b> (have/has + V3) — результат важен сейчас, время не указано: I have signed the contract. <b>Past Simple</b> — конкретный момент в прошлом: I signed it yesterday.",
+   examples:[
+     {en:"I have already sent the invoice. (fact, no time specified)",ru:"Я уже отправил счёт. (факт без уточнения времени)"},
+     {en:"I sent the invoice at 9 am this morning.",ru:"Я отправил счёт в 9 утра этим утром."}
+   ],
+   quiz:{q:"Выберите правильный вариант: '___ you ever negotiate with foreign partners?'",opts:["Did","Have","Do"],correct:1}},
+
+  {title:"Модальные глаголы: can / could / should / must / may",level:"mid",
+   rule:"<b>can</b> — умею/могу, <b>could</b> — мог/вежливая просьба, <b>should</b> — следует (совет), <b>must</b> — обязан (сильная необходимость), <b>may</b> — возможно/разрешение.",
+   examples:[
+     {en:"Could you please send me the tracking number?",ru:"Не могли бы вы прислать мне трек-номер?"},
+     {en:"You must present your passport at customs.",ru:"Вы обязаны предъявить паспорт на таможне."}
+   ],
+   quiz:{q:"Выберите правильный модальный глагол: 'You ___ arrive early — the meeting starts at 8 sharp.'",opts:["may","could","should"],correct:2}},
+
+  {title:"Предлоги места: in / on / at",level:"base",
+   rule:"<b>in</b> — внутри (in the office, in Kazakhstan). <b>on</b> — на поверхности, этаже (on the desk, on the 3rd floor). <b>at</b> — конкретное место/адрес (at the airport, at reception).",
+   examples:[
+     {en:"The documents are on the desk, in the top drawer.",ru:"Документы на столе, в верхнем ящике."},
+     {en:"Please meet our guests at the airport.",ru:"Пожалуйста, встретьте наших гостей в аэропорту."}
+   ],
+   quiz:{q:"Выберите правильный предлог: 'I will wait for you ___ the hotel lobby.'",opts:["in","on","at"],correct:2}},
+
+  {title:"Степени сравнения прилагательных",level:"base",
+   rule:"Короткие прилагательные: <b>fast → faster → fastest</b>. Длинные: <b>expensive → more expensive → most expensive</b>. Исключения: good/better/best, bad/worse/worst.",
+   examples:[
+     {en:"Air delivery is faster but more expensive than ground shipping.",ru:"Авиадоставка быстрее, но дороже наземной перевозки."},
+     {en:"This is the best offer we've received this month.",ru:"Это лучшее предложение, которое мы получили в этом месяце."}
+   ],
+   quiz:{q:"Выберите правильную форму: 'Our new service is ___ than the previous one.'",opts:["more reliable","reliably","most reliable"],correct:0}},
+
+  {title:"First Conditional: реальные условия",level:"mid",
+   rule:"Структура: <b>If + Present Simple, will + глагол</b>. Описывает реальные возможные ситуации в будущем.",
+   examples:[
+     {en:"If we sign the contract today, we will start delivery next week.",ru:"Если мы подпишем договор сегодня, мы начнём доставку на следующей неделе."},
+     {en:"If the parcel is delayed, I will contact you immediately.",ru:"Если посылка задержится, я немедленно свяжусь с вами."}
+   ],
+   quiz:{q:"Выберите правильный вариант: 'If you confirm the order, we ___ ship it tomorrow.'",opts:["will","would","shall"],correct:0}},
+
+  {title:"Исчисляемые и неисчисляемые существительные",level:"base",
+   rule:"Исчисляемые (parcels, meetings) — можно считать, используются с a/an и во множественном числе. Неисчисляемые (information, luggage, advice) — без a/an, всегда единственное число.",
+   examples:[
+     {en:"I need some information about the delivery schedule.",ru:"Мне нужна информация о расписании доставки."},
+     {en:"Could you give me a piece of advice on this matter?",ru:"Не могли бы вы дать мне совет по этому вопросу?"}
+   ],
+   quiz:{q:"Выберите правильный вариант: 'Could you send me ___ information about your services?'",opts:["an","some","a"],correct:1}},
+
+  {title:"Пассивный залог (Passive Voice)",level:"mid",
+   rule:"Структура: <b>be + V3 (причастие прошедшего времени)</b>. Используется, когда исполнитель неважен или неизвестен. Present: is/are done. Past: was/were done.",
+   examples:[
+     {en:"The parcel was delivered yesterday.",ru:"Посылка была доставлена вчера."},
+     {en:"All documents are checked by the customs officer.",ru:"Все документы проверяются таможенным инспектором."}
+   ],
+   quiz:{q:"Выберите правильную форму пассивного залога: 'The report ___ by the manager every Friday.'",opts:["prepares","is prepared","was preparing"],correct:1}},
+
+  {title:"Порядок слов в вопросах",level:"base",
+   rule:"Общий вопрос: <b>Aux + Subject + Verb</b> (Do you work? Can I help?). Специальный вопрос: <b>Wh- + Aux + Subject + Verb</b> (When does the flight depart?). Не переводите дословно с русского!",
+   examples:[
+     {en:"When does the shipment arrive in Almaty?",ru:"Когда отправление прибывает в Алматы?"},
+     {en:"Could you tell me where the check-in desk is?",ru:"Не могли бы вы сказать, где стойка регистрации?"}
+   ],
+   quiz:{q:"Выберите правильный порядок слов: '___ the meeting start?'",opts:["When does","When do","Does when"],correct:0}},
+
+  {title:"Косвенная речь (Reported Speech)",level:"mid",
+   rule:"При передаче чужих слов времена сдвигаются назад: say → said, is → was, will → would, can → could. Прямая: He said: 'I will come.' Косвенная: He said (that) he would come.",
+   examples:[
+     {en:"She said she would send the invoice by Friday.",ru:"Она сказала, что пришлёт счёт к пятнице."},
+     {en:"The manager told us that the delivery was delayed.",ru:"Менеджер сказал нам, что доставка задерживается."}
+   ],
+   quiz:{q:"Преобразуйте в косвенную речь: He said: 'I can attend the meeting.' → He said he ___ attend the meeting.",opts:["can","could","will"],correct:1}},
+
+  {title:"Фразовые глаголы в деловом English",level:"mid",
+   rule:"Фразовые глаголы — глагол + предлог/наречие. Часто используемые в деловой речи: <b>set up</b> (организовать), <b>follow up</b> (отследить, уточнить), <b>put off</b> (отложить), <b>look into</b> (изучить), <b>carry out</b> (выполнить).",
+   examples:[
+     {en:"Let's set up a meeting for next week.",ru:"Давайте организуем встречу на следующей неделе."},
+     {en:"I will follow up with the client about the shipment.",ru:"Я уточню у клиента насчёт отправления."}
+   ],
+   quiz:{q:"Выберите правильный фразовый глагол: 'We need to ___ the issue with the missing documents.'",opts:["look into","look after","look over"],correct:0}},
+
+  {title:"Will vs Going to: будущее время",level:"mid",
+   rule:"<b>will</b> — спонтанное решение, предсказание, обещание: I'll help you with that. <b>going to</b> — план или намерение, принятое заранее: I'm going to visit the warehouse tomorrow.",
+   examples:[
+     {en:"— I forgot the report! — Don't worry, I will print it for you.",ru:"— Я забыл отчёт! — Не волнуйтесь, я распечатаю его для вас."},
+     {en:"We are going to expand our delivery network next year.",ru:"В следующем году мы планируем расширить сеть доставки."}
+   ],
+   quiz:{q:"Выберите правильный вариант: 'Look at those clouds — it ___ rain.'",opts:["will","is going to","shall"],correct:1}}
+];
+
+const TEXTS = [
+  {id:"t0",title:"Встреча гостей",subtitle:"Казпочта — приём делегации",viewed:false,content:`
+<div class="dialogue">
+<p><span class="speaker-a">A (Алия — сотрудник Казпочты):</span> Good morning! Welcome to <span class="dict-word" data-en="KazPost" data-ru="Казпочта">KazPost</span>. My name is Aliya. I am your <span class="dict-word" data-en="host" data-ru="принимающая сторона">host</span> for today.</p>
+<p><span class="speaker-b">B (Mr. Evans — гость):</span> Good morning, Aliya! Thank you for <span class="dict-word" data-en="receiving" data-ru="принимая, встречая">receiving</span> us. I'm David Evans from DHL International.</p>
+<p><span class="speaker-a">A:</span> It is a pleasure to <span class="dict-word" data-en="meet" data-ru="познакомиться">meet</span> you, Mr. Evans. Did you have a good <span class="dict-word" data-en="flight" data-ru="полёт">flight</span>?</p>
+<p><span class="speaker-b">B:</span> Yes, thank you. The flight was comfortable. But I have a lot of <span class="dict-word" data-en="luggage" data-ru="багаж">luggage</span> — can someone help with it?</p>
+<p><span class="speaker-a">A:</span> Of course! Our <span class="dict-word" data-en="colleague" data-ru="коллега">colleague</span> will take care of that. Please follow me to the <span class="dict-word" data-en="conference room" data-ru="конференц-зал">conference room</span>. We have prepared a brief <span class="dict-word" data-en="presentation" data-ru="презентация">presentation</span> about our services.</p>
+<p><span class="speaker-b">B:</span> Excellent! We are very interested in your <span class="dict-word" data-en="delivery network" data-ru="сеть доставки">delivery network</span> in Kazakhstan.</p>
+<p><span class="speaker-a">A:</span> Great. After the <span class="dict-word" data-en="presentation" data-ru="презентация">presentation</span>, we can <span class="dict-word" data-en="discuss" data-ru="обсудить">discuss</span> possible <span class="dict-word" data-en="partnership" data-ru="партнёрство">partnership</span> opportunities. Would you like some tea or coffee first?</p>
+<p><span class="speaker-b">B:</span> Coffee would be perfect, thank you.</p>
+</div>`},
+
+  {id:"t1",title:"Переговоры",subtitle:"Деловая встреча с партнёром",viewed:false,content:`
+<div class="dialogue">
+<p><span class="speaker-a">A (Менеджер):</span> Good afternoon. Thank you for coming. Let's <span class="dict-word" data-en="discuss" data-ru="обсудить">discuss</span> the terms of our <span class="dict-word" data-en="cooperation" data-ru="сотрудничество">cooperation</span>.</p>
+<p><span class="speaker-b">B (Партнёр):</span> Of course. First, I'd like to talk about the <span class="dict-word" data-en="delivery timeline" data-ru="сроки доставки">delivery timeline</span>. What is your standard <span class="dict-word" data-en="processing time" data-ru="время обработки">processing time</span>?</p>
+<p><span class="speaker-a">A:</span> Our standard <span class="dict-word" data-en="processing time" data-ru="время обработки">processing time</span> is two business days. After that, <span class="dict-word" data-en="domestic" data-ru="внутренний (в стране)">domestic</span> <span class="dict-word" data-en="shipments" data-ru="отправления">shipments</span> take three to five days.</p>
+<p><span class="speaker-b">B:</span> And what about <span class="dict-word" data-en="international" data-ru="международный">international</span> deliveries?</p>
+<p><span class="speaker-a">A:</span> For <span class="dict-word" data-en="international" data-ru="международный">international</span> <span class="dict-word" data-en="shipments" data-ru="отправления">shipments</span>, it depends on the <span class="dict-word" data-en="destination" data-ru="место назначения">destination</span>. CIS countries — seven to ten days. Europe — up to two weeks.</p>
+<p><span class="speaker-b">B:</span> I see. Now, about the <span class="dict-word" data-en="pricing" data-ru="ценообразование">pricing</span>. Can you offer us a <span class="dict-word" data-en="discount" data-ru="скидка">discount</span> for large <span class="dict-word" data-en="volumes" data-ru="объёмы">volumes</span>?</p>
+<p><span class="speaker-a">A:</span> Yes, we offer a <span class="dict-word" data-en="volume discount" data-ru="скидка за объём">volume discount</span> starting from 500 <span class="dict-word" data-en="parcels" data-ru="посылки">parcels</span> per month. I can send you a detailed <span class="dict-word" data-en="price list" data-ru="прайс-лист">price list</span> after our meeting.</p>
+<p><span class="speaker-b">B:</span> That sounds good. Let's also <span class="dict-word" data-en="discuss" data-ru="обсудить">discuss</span> the <span class="dict-word" data-en="contract" data-ru="договор">contract</span> terms.</p>
+</div>`},
+
+  {id:"t2",title:"Гостиница",subtitle:"Check-in диалог",viewed:false,content:`
+<div class="dialogue">
+<p><span class="speaker-a">A (Гость):</span> Good evening. I have a <span class="dict-word" data-en="reservation" data-ru="бронирование">reservation</span>. My name is Seitkali Nurmagambetov.</p>
+<p><span class="speaker-b">B (Ресепшн):</span> Good evening, Mr. Nurmagambetov. Let me check your <span class="dict-word" data-en="reservation" data-ru="бронирование">reservation</span>... Yes, I can see it. A standard room for three nights. Could I see your <span class="dict-word" data-en="passport" data-ru="паспорт">passport</span>, please?</p>
+<p><span class="speaker-a">A:</span> Here you are.</p>
+<p><span class="speaker-b">B:</span> Thank you. You are on the fifth floor, room 512. Here is your <span class="dict-word" data-en="key card" data-ru="карта-ключ">key card</span>. <span class="dict-word" data-en="Breakfast" data-ru="Завтрак">Breakfast</span> is included and served from 7 to 10 AM in the <span class="dict-word" data-en="restaurant" data-ru="ресторан">restaurant</span> on the ground floor.</p>
+<p><span class="speaker-a">A:</span> Thank you. Is there <span class="dict-word" data-en="Wi-Fi" data-ru="вай-фай">Wi-Fi</span> in the room?</p>
+<p><span class="speaker-b">B:</span> Yes, <span class="dict-word" data-en="complimentary" data-ru="бесплатный">complimentary</span> Wi-Fi is available throughout the hotel. The password is on the card in your room.</p>
+<p><span class="speaker-a">A:</span> Perfect. What time is <span class="dict-word" data-en="check-out" data-ru="выезд">check-out</span>?</p>
+<p><span class="speaker-b">B:</span> <span class="dict-word" data-en="Check-out" data-ru="Выезд">Check-out</span> is at noon. If you need <span class="dict-word" data-en="luggage storage" data-ru="хранение багажа">luggage storage</span> after that, our <span class="dict-word" data-en="concierge" data-ru="консьерж">concierge</span> can help you.</p>
+<p><span class="speaker-a">A:</span> Great, thank you very much.</p>
+</div>`},
+
+  {id:"t3",title:"Аэропорт",subtitle:"Прохождение регистрации",viewed:false,content:`
+<div class="dialogue">
+<p><span class="speaker-a">A (Пассажир):</span> Excuse me, which <span class="dict-word" data-en="terminal" data-ru="терминал">terminal</span> is for international <span class="dict-word" data-en="departures" data-ru="вылеты">departures</span>?</p>
+<p><span class="speaker-b">B (Персонал):</span> Terminal 2, sir. You can take the <span class="dict-word" data-en="shuttle bus" data-ru="трансферный автобус">shuttle bus</span> from the main entrance.</p>
+<p><span class="speaker-a">A:</span> Thank you. <em>(At the check-in counter)</em> Good morning. I'd like to <span class="dict-word" data-en="check in" data-ru="зарегистрироваться">check in</span> for flight KC 922 to Frankfurt.</p>
+<p><span class="speaker-b">C (Агент):</span> Good morning! May I see your <span class="dict-word" data-en="passport" data-ru="паспорт">passport</span> and <span class="dict-word" data-en="e-ticket" data-ru="электронный билет">e-ticket</span>, please?</p>
+<p><span class="speaker-a">A:</span> Here they are. I also have one piece of <span class="dict-word" data-en="checked baggage" data-ru="багаж для сдачи">checked baggage</span>.</p>
+<p><span class="speaker-b">C:</span> Your bag weighs 22 kilograms — that's within the limit. Here is your <span class="dict-word" data-en="boarding pass" data-ru="посадочный талон">boarding pass</span>. <span class="dict-word" data-en="Boarding" data-ru="Посадка">Boarding</span> starts at 14:30 at <span class="dict-word" data-en="gate" data-ru="выход на посадку">gate</span> B7.</p>
+<p><span class="speaker-a">A:</span> Thank you. Is there a <span class="dict-word" data-en="delay" data-ru="задержка">delay</span>?</p>
+<p><span class="speaker-b">C:</span> No, the flight is on time. Please go through <span class="dict-word" data-en="security" data-ru="досмотр безопасности">security</span> and then <span class="dict-word" data-en="passport control" data-ru="паспортный контроль">passport control</span>. Have a good flight!</p>
+</div>`},
+
+  {id:"t4",title:"Казахстан",subtitle:"О стране — текст для чтения",viewed:false,content:`
+<p style="line-height:1.8">Kazakhstan is the world's largest <span class="dict-word" data-en="landlocked" data-ru="не имеющий выхода к морю">landlocked</span> country. It is located in <span class="dict-word" data-en="Central Asia" data-ru="Центральная Азия">Central Asia</span> and covers a vast area of <span class="dict-word" data-en="steppe" data-ru="степь">steppe</span>, mountains, and deserts.</p>
+<br>
+<p style="line-height:1.8">The country has a rich <span class="dict-word" data-en="nomadic" data-ru="кочевой">nomadic</span> <span class="dict-word" data-en="heritage" data-ru="наследие">heritage</span>. For centuries, Kazakh people lived as <span class="dict-word" data-en="nomads" data-ru="кочевники">nomads</span> on the <span class="dict-word" data-en="steppe" data-ru="степь">steppe</span>. Today, Kazakhstan is a modern, <span class="dict-word" data-en="sovereign" data-ru="суверенный">sovereign</span> state with a fast-growing economy.</p>
+<br>
+<p style="line-height:1.8">The capital city is Astana. It is a symbol of the country's <span class="dict-word" data-en="ambitions" data-ru="амбиции">ambitions</span> and modern <span class="dict-word" data-en="infrastructure" data-ru="инфраструктура">infrastructure</span>. Almaty is the largest city and a major business centre.</p>
+<br>
+<p style="line-height:1.8">Kazakhstan is known for its natural <span class="dict-word" data-en="resources" data-ru="ресурсы">resources</span>, especially oil, gas, and minerals. The country is also developing its logistics and postal <span class="dict-word" data-en="infrastructure" data-ru="инфраструктура">infrastructure</span> to become a key <span class="dict-word" data-en="transit" data-ru="транзит">transit</span> hub between Europe and Asia.</p>
+<br>
+<p style="line-height:1.8">Kazakh people are famous for being <span class="dict-word" data-en="hospitable" data-ru="гостеприимный">hospitable</span>. <span class="dict-word" data-en="Bilateral" data-ru="Двусторонний">Bilateral</span> <span class="dict-word" data-en="partnership" data-ru="партнёрство">partnership</span> with international companies is a priority for Kazakhstan's development.</p>`},
+
+  {id:"t5",title:"Логистика",subtitle:"E-commerce и почтовые сервисы",viewed:false,content:`
+<p style="line-height:1.8">The global <span class="dict-word" data-en="e-commerce" data-ru="электронная торговля">e-commerce</span> market is growing rapidly. More people buy goods online, and this creates a huge demand for fast and reliable <span class="dict-word" data-en="delivery" data-ru="доставка">delivery</span> services.</p>
+<br>
+<p style="line-height:1.8">The <span class="dict-word" data-en="supply chain" data-ru="цепочка поставок">supply chain</span> is the process from production to the customer's door. It includes <span class="dict-word" data-en="warehousing" data-ru="складирование">warehousing</span>, <span class="dict-word" data-en="sorting" data-ru="сортировка">sorting</span>, transportation, and <span class="dict-word" data-en="last-mile" data-ru="доставка последней мили">last-mile</span> delivery.</p>
+<br>
+<p style="line-height:1.8"><span class="dict-word" data-en="Last-mile" data-ru="Доставка последней мили">Last-mile</span> delivery is the final step — from a distribution centre to the customer. It is often the most expensive part of the <span class="dict-word" data-en="logistics" data-ru="логистика">logistics</span> process.</p>
+<br>
+<p style="line-height:1.8">A good <span class="dict-word" data-en="return policy" data-ru="политика возврата">return policy</span> is very important for <span class="dict-word" data-en="marketplace" data-ru="торговая площадка">marketplace</span> customers. If a product arrives damaged, the buyer wants a simple <span class="dict-word" data-en="return" data-ru="возврат">return</span> process.</p>
+<br>
+<p style="line-height:1.8"><span class="dict-word" data-en="Cross-border" data-ru="Трансграничная">Cross-border</span> <span class="dict-word" data-en="e-commerce" data-ru="электронная торговля">e-commerce</span> means buying products from another country. <span class="dict-word" data-en="Customs" data-ru="Таможня">Customs</span> and <span class="dict-word" data-en="duties" data-ru="пошлины">duties</span> can make cross-border <span class="dict-word" data-en="shipments" data-ru="отправления">shipments</span> more complicated. A clear <span class="dict-word" data-en="tracking number" data-ru="трек-номер">tracking number</span> helps customers follow their order at every stage.</p>`}
+];
+
+const IRREGULAR_VERBS = [
+  ["arise","arose","arisen","возникать"],["be","was/were","been","быть"],
+  ["bear","bore","born/borne","нести/рожать"],["beat","beat","beaten","бить"],
+  ["become","became","become","становиться"],["begin","began","begun","начинать"],
+  ["bend","bent","bent","сгибать"],["bind","bound","bound","связывать"],
+  ["bite","bit","bitten","кусать"],["bleed","bled","bled","кровоточить"],
+  ["blow","blew","blown","дуть"],["break","broke","broken","ломать"],
+  ["breed","bred","bred","разводить"],["bring","brought","brought","приносить"],
+  ["build","built","built","строить"],["burn","burnt","burnt","гореть"],
+  ["burst","burst","burst","взрываться"],["buy","bought","bought","покупать"],
+  ["cast","cast","cast","бросать"],["catch","caught","caught","ловить"],
+  ["choose","chose","chosen","выбирать"],["come","came","come","приходить"],
+  ["cost","cost","cost","стоить"],["creep","crept","crept","ползти"],
+  ["cut","cut","cut","резать"],["deal","dealt","dealt","иметь дело"],
+  ["dig","dug","dug","копать"],["do","did","done","делать"],
+  ["draw","drew","drawn","рисовать/тянуть"],["dream","dreamt","dreamt","мечтать"],
+  ["drink","drank","drunk","пить"],["drive","drove","driven","водить"],
+  ["eat","ate","eaten","есть"],["fall","fell","fallen","падать"],
+  ["feed","fed","fed","кормить"],["feel","felt","felt","чувствовать"],
+  ["fight","fought","fought","бороться"],["find","found","found","находить"],
+  ["flee","fled","fled","убегать"],["fly","flew","flown","летать"],
+  ["forbid","forbade","forbidden","запрещать"],["forget","forgot","forgotten","забывать"],
+  ["forgive","forgave","forgiven","прощать"],["freeze","froze","frozen","замерзать"],
+  ["get","got","got","получать"],["give","gave","given","давать"],
+  ["go","went","gone","идти/ехать"],["grow","grew","grown","расти"],
+  ["hang","hung","hung","вешать"],["have","had","had","иметь"],
+  ["hear","heard","heard","слышать"],["hide","hid","hidden","прятать"],
+  ["hit","hit","hit","ударять"],["hold","held","held","держать"],
+  ["hurt","hurt","hurt","причинять боль"],["keep","kept","kept","хранить/держать"],
+  ["kneel","knelt","knelt","стоять на коленях"],["know","knew","known","знать"],
+  ["lay","laid","laid","класть"],["lead","led","led","вести"],
+  ["lean","leant","leant","опираться"],["leap","leapt","leapt","прыгать"],
+  ["learn","learnt","learnt","учиться"],["leave","left","left","уходить/оставлять"],
+  ["lend","lent","lent","одалживать"],["let","let","let","разрешать"],
+  ["lie","lay","lain","лежать"],["light","lit","lit","зажигать"],
+  ["lose","lost","lost","терять"],["make","made","made","делать"],
+  ["mean","meant","meant","значить"],["meet","met","met","встречать"],
+  ["mistake","mistook","mistaken","ошибаться"],["overcome","overcame","overcome","преодолевать"],
+  ["pay","paid","paid","платить"],["put","put","put","класть"],
+  ["quit","quit","quit","бросать"],["read","read","read","читать"],
+  ["ride","rode","ridden","ехать верхом"],["ring","rang","rung","звонить"],
+  ["rise","rose","risen","подниматься"],["run","ran","run","бежать"],
+  ["say","said","said","говорить"],["see","saw","seen","видеть"],
+  ["seek","sought","sought","искать"],["sell","sold","sold","продавать"],
+  ["send","sent","sent","отправлять"],["set","set","set","устанавливать"],
+  ["shed","shed","shed","терять (листья)"],["shine","shone","shone","светить"],
+  ["shoot","shot","shot","стрелять"],["show","showed","shown","показывать"],
+  ["shrink","shrank","shrunk","сжиматься"],["shut","shut","shut","закрывать"],
+  ["sing","sang","sung","петь"],["sit","sat","sat","сидеть"],
+  ["sleep","slept","slept","спать"],["slide","slid","slid","скользить"],
+  ["smell","smelt","smelt","пахнуть"],["speak","spoke","spoken","говорить"],
+  ["spell","spelt","spelt","писать по буквам"],["spend","spent","spent","тратить"],
+  ["spill","spilt","spilt","проливать"],["split","split","split","раскалывать"],
+  ["spread","spread","spread","распространять"],["spring","sprang","sprung","прыгать"],
+  ["stand","stood","stood","стоять"],["steal","stole","stolen","красть"],
+  ["stick","stuck","stuck","прикреплять"],["sting","stung","stung","жалить"],
+  ["strike","struck","struck","ударять"],["swear","swore","sworn","клясться"],
+  ["sweep","swept","swept","мести"],["swim","swam","swum","плавать"],
+  ["swing","swung","swung","качаться"],["take","took","taken","брать"],
+  ["teach","taught","taught","учить"],["tear","tore","torn","рвать"],
+  ["tell","told","told","рассказывать"],["think","thought","thought","думать"],
+  ["throw","threw","thrown","бросать"],["understand","understood","understood","понимать"],
+  ["wake","woke","woken","просыпаться"],["wear","wore","worn","носить"],
+  ["weep","wept","wept","плакать"],["win","won","won","побеждать"],
+  ["withdraw","withdrew","withdrawn","отзывать/снимать"],["write","wrote","written","писать"]
+];
+
+const SPEAKING_PHRASES = [
+  {en:"Good morning! I'm glad to welcome you to our office.", ru:"Доброе утро! Рад приветствовать вас в нашем офисе."},
+  {en:"Could we discuss the delivery terms in more detail?", ru:"Могли бы мы обсудить условия доставки подробнее?"},
+  {en:"When can you confirm the final deadline for the shipment?", ru:"Когда вы можете подтвердить окончательный срок отправки?"},
+  {en:"We can offer you a price of five dollars per kilogram.", ru:"Мы можем предложить вам цену пять долларов за килограмм."},
+  {en:"That sounds good. We agree to the proposed terms.", ru:"Звучит хорошо. Мы согласны с предложенными условиями."},
+  {en:"Let's postpone that question to our next meeting.", ru:"Давайте перенесём этот вопрос на следующую встречу."}
+];
+
+// Vocab test words - 90 words in 3 levels
+const VT_WORDS = {
+  base:{label:"Базовый (топ-1000)",range:1000,words:[
+    {en:"answer",ru:"ответ"},{en:"change",ru:"изменение"},{en:"choose",ru:"выбирать"},
+    {en:"city",ru:"город"},{en:"close",ru:"закрыть/близкий"},{en:"country",ru:"страна"},
+    {en:"example",ru:"пример"},{en:"family",ru:"семья"},{en:"follow",ru:"следовать"},
+    {en:"group",ru:"группа"},{en:"hand",ru:"рука"},{en:"help",ru:"помогать"},
+    {en:"keep",ru:"хранить"},{en:"large",ru:"большой"},{en:"leave",ru:"уходить"},
+    {en:"letter",ru:"письмо/буква"},{en:"major",ru:"главный"},{en:"move",ru:"двигаться"},
+    {en:"often",ru:"часто"},{en:"open",ru:"открывать"},{en:"order",ru:"заказ/порядок"},
+    {en:"place",ru:"место"},{en:"problem",ru:"проблема"},{en:"real",ru:"настоящий"},
+    {en:"second",ru:"второй/секунда"},{en:"side",ru:"сторона"},{en:"small",ru:"маленький"},
+    {en:"while",ru:"пока/некоторое время"},{en:"world",ru:"мир"},{en:"year",ru:"год"}
+  ]},
+  mid:{label:"Средний (топ 1000–3000)",range:2000,words:[
+    {en:"achieve",ru:"достигать"},{en:"approach",ru:"подход"},{en:"available",ru:"доступный"},
+    {en:"benefit",ru:"выгода/польза"},{en:"cause",ru:"причина"},{en:"concern",ru:"беспокойство"},
+    {en:"consider",ru:"рассматривать"},{en:"demand",ru:"спрос/требовать"},{en:"describe",ru:"описывать"},
+    {en:"develop",ru:"развивать"},{en:"effect",ru:"эффект/результат"},{en:"evidence",ru:"доказательство"},
+    {en:"exist",ru:"существовать"},{en:"experience",ru:"опыт"},{en:"force",ru:"сила"},
+    {en:"involve",ru:"включать/вовлекать"},{en:"issue",ru:"вопрос/проблема"},{en:"market",ru:"рынок"},
+    {en:"method",ru:"метод"},{en:"occur",ru:"происходить"},{en:"prepare",ru:"готовить"},
+    {en:"produce",ru:"производить"},{en:"provide",ru:"предоставлять"},{en:"reduce",ru:"сокращать"},
+    {en:"require",ru:"требовать"},{en:"represent",ru:"представлять"},{en:"result",ru:"результат"},
+    {en:"suggest",ru:"предлагать"},{en:"support",ru:"поддержка"},{en:"value",ru:"ценность"}
+  ]},
+  adv:{label:"Деловой продвинутый (топ 3000–6000)",range:3000,words:[
+    {en:"agenda",ru:"повестка дня"},{en:"bilateral",ru:"двусторонний"},{en:"compliance",ru:"соответствие/выполнение"},
+    {en:"contingency",ru:"непредвиденное обстоятельство"},{en:"convene",ru:"созывать"},{en:"delegate",ru:"делегировать"},
+    {en:"diversify",ru:"диверсифицировать"},{en:"expedite",ru:"ускорять"},{en:"facilitate",ru:"облегчать/содействовать"},
+    {en:"forecast",ru:"прогноз"},{en:"framework",ru:"структура/рамки"},{en:"governance",ru:"управление"},
+    {en:"implement",ru:"реализовывать"},{en:"incentive",ru:"стимул"},{en:"jurisdiction",ru:"юрисдикция"},
+    {en:"leverage",ru:"использовать преимущество"},{en:"liaise",ru:"поддерживать связь"},{en:"mandate",ru:"мандат/полномочия"},
+    {en:"mitigate",ru:"смягчать"},{en:"negotiate",ru:"вести переговоры"},{en:"obligations",ru:"обязательства"},
+    {en:"procurement",ru:"закупки"},{en:"protocol",ru:"протокол"},{en:"ratify",ru:"ратифицировать"},
+    {en:"stakeholder",ru:"заинтересованная сторона"},{en:"subsidiary",ru:"дочерняя компания"},{en:"tenure",ru:"срок пребывания"},
+    {en:"threshold",ru:"порог"},{en:"transparency",ru:"прозрачность"},{en:"venue",ru:"место проведения"}
+  ]}
+};
+
+// ==================== STORAGE ====================
+function store(key, val) {
+  try { localStorage.setItem('aime_' + key, JSON.stringify(val)); } catch(e) {}
+}
+function load(key, def) {
+  try {
+    const v = localStorage.getItem('aime_' + key);
+    return v !== null ? JSON.parse(v) : def;
+  } catch(e) { return def; }
+}
+
+// ==================== STATE ====================
+let currentTab = 'home';
+let vocabSetIndex = load('vocab-day-offset', getDefaultVocabIndex());
+let grammarIndex = load('grammar-index', 0);
+let currentTextId = 't0';
+let verbsData = [...IRREGULAR_VERBS];
+
+function getDefaultVocabIndex() {
+  return Math.floor(Date.now() / 86400000) % VOCAB_SETS.length;
+}
+
+// Storage helpers
+function getUnknownWords() { return load('unknown-words', {}); }
+function getKnownWords() { return load('known-words', {}); }
+function getGrammarStats() { return load('grammar-stats', {}); }
+function getTextsViewed() { return load('texts-viewed', {}); }
+function getSpeakingScores() { return load('speaking-scores', {}); }
+
+function toggleUnknown(word, ru) {
+  const unk = getUnknownWords();
+  const key = word.toLowerCase();
+  if (unk[key]) { delete unk[key]; }
+  else { unk[key] = {word, ru}; }
+  store('unknown-words', unk);
+}
+function isUnknown(word) { return !!getUnknownWords()[word.toLowerCase()]; }
+
+// ==================== TAB SWITCHING ====================
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  document.querySelectorAll('.nav-tab')[['home','vocab','grammar','texts','verbs','mydict','vocabtest','mentor'].indexOf(id)].classList.add('active');
+  currentTab = id;
+  renderTab(id);
+}
+
+function renderTab(id) {
+  if (id === 'home') renderHome();
+  if (id === 'vocab') renderVocab();
+  if (id === 'grammar') renderGrammar();
+  if (id === 'texts') renderTexts();
+  if (id === 'verbs') renderVerbs();
+  if (id === 'mydict') renderMyDict();
+  if (id === 'vocabtest') renderVocabTest();
+  if (id === 'mentor') renderMentor();
+}
+
+// ==================== HOME ====================
+function renderHome() {
+  const set = VOCAB_SETS[vocabSetIndex];
+  document.getElementById('home-vocab-title').textContent = set.title;
+  const gt = GRAMMAR_TOPICS[grammarIndex];
+  document.getElementById('home-grammar-title').textContent = gt.title;
+
+  // Learning preview
+  const unk = getUnknownWords();
+  const words = Object.values(unk).slice(0, 5);
+  const preEl = document.getElementById('home-learning-preview');
+  if (words.length === 0) {
+    preEl.innerHTML = '<div style="color:var(--gray);font-size:.88rem">Пусто — нажмите на слово в «Слова дня» или «Тексты», чтобы добавить его.</div>';
+  } else {
+    preEl.innerHTML = words.map(w =>
+      `<span class="word-chip learning">${w.word} <span style="font-weight:normal;opacity:.8">— ${w.ru}</span></span>`
+    ).join('') + (Object.keys(unk).length > 5 ? `<span style="font-size:.82rem;color:var(--gray);margin-left:8px">и ещё ${Object.keys(unk).length - 5}</span>` : '');
+  }
+
+  // Stats
+  const gs = getGrammarStats();
+  const tv = getTextsViewed();
+  const ss = getSpeakingScores();
+  const knCount = Object.keys(getKnownWords()).length;
+  const unkCount = Object.keys(unk).length;
+  const gramDone = Object.keys(gs).length;
+  const textsDone = Object.keys(tv).length;
+  const speakDone = Object.keys(ss).length;
+  document.getElementById('home-stats').innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center">
+      <div><div style="font-size:1.5rem;font-weight:bold;color:var(--navy)">${gramDone}/14</div><div style="font-size:.78rem;color:var(--gray)">грамм. тем</div></div>
+      <div><div style="font-size:1.5rem;font-weight:bold;color:var(--navy)">${textsDone}/6</div><div style="font-size:.78rem;color:var(--gray)">текстов</div></div>
+      <div><div style="font-size:1.5rem;font-weight:bold;color:var(--navy)">${speakDone}/6</div><div style="font-size:.78rem;color:var(--gray)">фраз речи</div></div>
+      <div><div style="font-size:1.5rem;font-weight:bold;color:var(--green)">${knCount}</div><div style="font-size:.78rem;color:var(--gray)">знаю</div></div>
+      <div><div style="font-size:1.5rem;font-weight:bold;color:var(--red)">${unkCount}</div><div style="font-size:.78rem;color:var(--gray)">учу</div></div>
+      <div><div style="font-size:1.5rem;font-weight:bold;color:var(--gold)">${VOCAB_SETS.length * 10}</div><div style="font-size:.78rem;color:var(--gray)">слов в наборах</div></div>
+    </div>`;
+}
+
+// ==================== VOCAB ====================
+function renderVocab() {
+  const set = VOCAB_SETS[vocabSetIndex];
+  document.getElementById('vocab-set-title').textContent = set.title;
+
+  const unk = getUnknownWords();
+  const total = set.words.length;
+  const unknownCount = set.words.filter(w => unk[w.en.toLowerCase()]).length;
+  const pct = Math.round(((total - unknownCount) / total) * 100);
+
+  document.getElementById('vocab-progress-fill').style.width = pct + '%';
+  document.getElementById('vocab-progress-label').textContent = `${total - unknownCount} из ${total} слов не отмечены как незнакомые`;
+
+  const grid = document.getElementById('vocab-words-grid');
+  grid.innerHTML = set.words.map(w => {
+    const learning = isUnknown(w.en);
+    return `<span class="word-chip ${learning ? 'learning' : ''}" onclick="toggleVocabWord('${w.en}','${escHtml(w.ru)}')">
+      <strong>${w.en}</strong> — ${w.ru}
+      ${learning ? '<span>✗</span>' : '<span style="opacity:.4">○</span>'}
+    </span>`;
+  }).join('');
+}
+
+function vocabPrev() {
+  vocabSetIndex = (vocabSetIndex - 1 + VOCAB_SETS.length) % VOCAB_SETS.length;
+  store('vocab-day-offset', vocabSetIndex);
+  renderVocab();
+}
+function vocabNext() {
+  vocabSetIndex = (vocabSetIndex + 1) % VOCAB_SETS.length;
+  store('vocab-day-offset', vocabSetIndex);
+  renderVocab();
+}
+function toggleVocabWord(en, ru) {
+  toggleUnknown(en, ru);
+  renderVocab();
+}
+
+// ==================== GRAMMAR ====================
+let quizAnswered = false;
+
+function renderGrammar() {
+  const t = GRAMMAR_TOPICS[grammarIndex];
+  const gs = getGrammarStats();
+  const stat = gs[grammarIndex];
+
+  document.getElementById('grammar-counter').textContent =
+    `Тема ${grammarIndex + 1} из ${GRAMMAR_TOPICS.length}`;
+
+  quizAnswered = false;
+
+  const statHtml = stat
+    ? `<span class="stat-chip ${stat.lastOk ? 'stat-ok' : 'stat-fail'}">${stat.lastOk ? '✓ верно' : '✗ неверно'} (${stat.attempts} попытки)</span>`
+    : '';
+
+  document.getElementById('grammar-topic-card').innerHTML = `
+    <div class="card">
+      <h2>${t.title} <span class="badge badge-${t.level === 'base' ? 'base' : 'mid'}">${t.level === 'base' ? 'база' : 'средний'}</span>${statHtml}</h2>
+      <p style="line-height:1.7;margin-bottom:14px">${t.rule}</p>
+      <div style="background:var(--cream);border-radius:6px;padding:12px;margin-bottom:14px">
+        ${t.examples.map(ex => `
+          <div style="margin-bottom:8px">
+            <div style="font-weight:600;color:var(--navy)">${ex.en}</div>
+            <div style="font-size:.85rem;color:var(--gray)">${ex.ru}</div>
+          </div>`).join('')}
+      </div>
+      <div style="border-top:1px solid var(--light);padding-top:12px">
+        <div style="font-weight:600;margin-bottom:10px;color:var(--navy2)">Мини-квиз:</div>
+        <p style="margin-bottom:10px">${t.quiz.q}</p>
+        <div id="quiz-options">
+          ${t.quiz.opts.map((o, i) =>
+            `<button class="quiz-option" onclick="answerQuiz(${i})">${o}</button>`
+          ).join('')}
+        </div>
+        <div id="quiz-feedback" style="margin-top:8px;font-size:.88rem;display:none"></div>
+      </div>
+    </div>`;
+}
+
+function answerQuiz(idx) {
+  if (quizAnswered) return;
+  quizAnswered = true;
+
+  const t = GRAMMAR_TOPICS[grammarIndex];
+  const correct = t.quiz.correct;
+  const btns = document.querySelectorAll('.quiz-option');
+  const isOk = idx === correct;
+
+  btns.forEach((b, i) => {
+    if (i === idx) b.classList.add(isOk ? 'correct' : 'wrong');
+    if (i === correct && !isOk) b.classList.add('show-correct');
+    b.disabled = true;
+  });
+
+  const fb = document.getElementById('quiz-feedback');
+  fb.style.display = 'block';
+  fb.innerHTML = isOk
+    ? `<span style="color:var(--green)">✓ Правильно!</span>`
+    : `<span style="color:var(--red)">✗ Неверно. Правильный ответ: <b>${t.quiz.opts[correct]}</b></span>`;
+
+  // Save stats
+  const gs = getGrammarStats();
+  const prev = gs[grammarIndex] || {attempts: 0, lastOk: false};
+  gs[grammarIndex] = {attempts: prev.attempts + 1, lastOk: isOk};
+  store('grammar-stats', gs);
+}
+
+function grammarPrev() {
+  grammarIndex = (grammarIndex - 1 + GRAMMAR_TOPICS.length) % GRAMMAR_TOPICS.length;
+  store('grammar-index', grammarIndex);
+  renderGrammar();
+}
+function grammarNext() {
+  grammarIndex = (grammarIndex + 1) % GRAMMAR_TOPICS.length;
+  store('grammar-index', grammarIndex);
+  renderGrammar();
+}
+
+// ==================== TEXTS ====================
+function renderTexts() {
+  const tv = getTextsViewed();
+
+  // Nav buttons
+  document.getElementById('text-nav').innerHTML = TEXTS.map(t => {
+    const viewed = tv[t.id];
+    return `<button class="text-btn ${currentTextId === t.id ? 'active' : ''} ${viewed ? 'viewed' : ''}"
+      onclick="selectText('${t.id}')">${t.title}</button>`;
+  }).join('');
+
+  // Content
+  const text = TEXTS.find(t => t.id === currentTextId);
+  if (!text) return;
+
+  // Mark as viewed
+  const tv2 = getTextsViewed();
+  tv2[text.id] = true;
+  store('texts-viewed', tv2);
+
+  document.getElementById('text-content').innerHTML = `
+    <h2>${text.title}</h2>
+    <p style="font-size:.82rem;color:var(--gray);margin-bottom:14px">${text.subtitle}</p>
+    <p style="font-size:.8rem;color:var(--gray);margin-bottom:10px">Нажмите на <u style="color:var(--blue)">подчёркнутое слово</u>, чтобы добавить его в «Учу»</p>
+    ${text.content}`;
+
+  // Attach events to dict-words
+  document.querySelectorAll('#text-content .dict-word').forEach(el => {
+    const en = el.dataset.en;
+    const ru = el.dataset.ru;
+    if (isUnknown(en)) el.classList.add('learning');
+    el.onclick = function() {
+      toggleUnknown(en, ru);
+      this.classList.toggle('learning', isUnknown(en));
+    };
+  });
+}
+
+function selectText(id) {
+  currentTextId = id;
+  renderTexts();
+}
+
+// ==================== VERBS ====================
+function renderVerbs() {
+  renderVerbRows(IRREGULAR_VERBS);
+}
+
+function renderVerbRows(rows) {
+  document.getElementById('verb-tbody').innerHTML = rows.map(r =>
+    `<tr><td><strong>${r[0]}</strong></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`
+  ).join('');
+}
+
+function filterVerbs() {
+  const q = document.getElementById('verb-search').value.toLowerCase();
+  if (!q) { renderVerbRows(IRREGULAR_VERBS); return; }
+  const filtered = IRREGULAR_VERBS.filter(r =>
+    r.some(cell => cell.toLowerCase().includes(q))
+  );
+  renderVerbRows(filtered);
+}
+
+// ==================== MY DICT ====================
+function renderMyDict() {
+  const unk = getUnknownWords();
+  const words = Object.values(unk);
+  const el = document.getElementById('mydict-content');
+
+  if (words.length === 0) {
+    el.innerHTML = `<div class="empty-state"><div class="icon">📭</div>
+      <div>Словарь пуст.<br>Нажмите на слово в разделах «Слова дня» или «Тексты», чтобы добавить его сюда.</div></div>`;
+    return;
+  }
+
+  el.innerHTML = `<p style="font-size:.83rem;color:var(--gray);margin-bottom:12px">${words.length} слов в списке «Учу»</p>` +
+    words.map(w => `
+      <div class="dict-item">
+        <div><strong>${w.word}</strong> <span style="color:var(--gray);font-size:.85rem">— ${w.ru}</span></div>
+        <button class="btn btn-green btn-sm" onclick="markLearned('${w.word}','${escHtml(w.ru)}')">✓ Выучил</button>
+      </div>`).join('');
+}
+
+function markLearned(word, ru) {
+  const unk = getUnknownWords();
+  delete unk[word.toLowerCase()];
+  store('unknown-words', unk);
+
+  const known = getKnownWords();
+  known[word.toLowerCase()] = {word, ru};
+  store('known-words', known);
+
+  renderMyDict();
+  updateVtCounters();
+}
+
+// ==================== VOCAB TEST ====================
+function renderVocabTest() {
+  updateVtCounters();
+  renderVtLevels();
+  updateVtEstimate();
+}
+
+function updateVtCounters() {
+  document.getElementById('vt-known-count').textContent = Object.keys(getKnownWords()).length;
+  document.getElementById('vt-learning-count').textContent = Object.keys(getUnknownWords()).length;
+}
+
+function renderVtLevels() {
+  const el = document.getElementById('vt-levels');
+  const unk = getUnknownWords();
+  const known = getKnownWords();
+
+  el.innerHTML = Object.entries(VT_WORDS).map(([lvl, data]) => `
+    <div class="level-section">
+      <h3>${data.label}</h3>
+      <div class="level-words">
+        ${data.words.map(w => {
+          const k = w.en.toLowerCase();
+          const isKnown = !!known[k];
+          const isLearning = !!unk[k];
+          return `<div class="word-test-item ${isKnown ? 'known' : ''} ${isLearning ? 'learning-item' : ''}" id="vt-${k.replace(/ /g,'_')}">
+            <div><span class="word-test-item word-en">${w.en}</span> <span class="word-ru">— ${w.ru}</span></div>
+            <div class="word-test-btns">
+              <button class="btn btn-green btn-sm" onclick="vtKnow('${w.en}','${escHtml(w.ru)}')">✓ Знаю</button>
+              <button class="btn btn-red btn-sm" onclick="vtLearn('${w.en}','${escHtml(w.ru)}')">✗ Учу</button>
+            </div>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>`).join('');
+}
+
+function vtKnow(en, ru) {
+  const unk = getUnknownWords();
+  delete unk[en.toLowerCase()];
+  store('unknown-words', unk);
+  const known = getKnownWords();
+  known[en.toLowerCase()] = {word: en, ru};
+  store('known-words', known);
+  updateVtCounters();
+  updateVtEstimate();
+  refreshVtItem(en, true, false);
+}
+
+function vtLearn(en, ru) {
+  const known = getKnownWords();
+  delete known[en.toLowerCase()];
+  store('known-words', known);
+  const unk = getUnknownWords();
+  unk[en.toLowerCase()] = {word: en, ru};
+  store('unknown-words', unk);
+  updateVtCounters();
+  updateVtEstimate();
+  refreshVtItem(en, false, true);
+}
+
+function refreshVtItem(en, isKnown, isLearning) {
+  const el = document.getElementById('vt-' + en.toLowerCase().replace(/ /g,'_'));
+  if (!el) return;
+  el.classList.toggle('known', isKnown);
+  el.classList.toggle('learning-item', isLearning);
+}
+
+function updateVtEstimate() {
+  const known = getKnownWords();
+  const allVtWords = [...VT_WORDS.base.words, ...VT_WORDS.mid.words, ...VT_WORDS.adv.words];
+  const anyMarked = allVtWords.some(w => !!known[w.en.toLowerCase()] || !!getUnknownWords()[w.en.toLowerCase()]);
+
+  if (!anyMarked) {
+    document.getElementById('vt-estimate').style.display = 'none';
+    document.getElementById('vt-hint').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('vt-hint').style.display = 'none';
+  document.getElementById('vt-estimate').style.display = 'block';
+
+  let total = 0;
+  for (const [lvl, data] of Object.entries(VT_WORDS)) {
+    const markedKnown = data.words.filter(w => !!known[w.en.toLowerCase()]).length;
+    const markedAny = data.words.filter(w => !!known[w.en.toLowerCase()] || !!getUnknownWords()[w.en.toLowerCase()]).length;
+    if (markedAny === 0) continue;
+    const ratio = markedKnown / data.words.length;
+    total += Math.round(ratio * data.range);
+  }
+
+  document.getElementById('vt-estimate-num').textContent = '≈ ' + total.toLocaleString('ru') + ' слов';
+}
+
+// ==================== MENTOR ====================
+function renderMentor() {
+  const scores = calcMentorScores();
+  const el = document.getElementById('mentor-scores');
+
+  const rows = [
+    {label:'📝 Грамматика (25%)', val: scores.grammar},
+    {label:'📚 Словарный запас (20%)', val: scores.vocab},
+    {label:'💬 Деловые тексты (15%)', val: scores.texts},
+    {label:'🎙 Разговорная речь (40%)', val: scores.speaking}
+  ];
+
+  el.innerHTML = rows.map(r => `
+    <div class="score-block">
+      <div class="score-label">${r.label}</div>
+      <div class="score-bar"><div class="progress-bar"><div class="progress-fill" style="width:${r.val}%;background:${r.val >= 70 ? 'var(--green)' : r.val >= 45 ? 'var(--gold)' : 'var(--red)'}"></div></div></div>
+      <div class="score-val">${r.val}%</div>
+    </div>`).join('');
+
+  // Verdict
+  const hasSpeak = Object.keys(getSpeakingScores()).length > 0;
+  let verdict = '';
+  if (!hasSpeak) {
+    verdict = `<div class="verdict-box verdict-none">
+      <strong>Оценка ещё не выносится</strong><br>
+      Пройдите хотя бы одну фразу в тренировке устной речи ниже — это ключевой показатель готовности к переговорам.
+    </div>`;
+  } else {
+    const total = scores.total;
+    if (total >= 75) {
+      verdict = `<div class="verdict-box verdict-good">
+        <strong>✅ Вы готовы вести простые переговоры самостоятельно</strong> (${total}%)<br>
+        <ul style="margin-top:8px;padding-left:18px;font-size:.9rem">
+          ${scores.grammar < 70 ? '<li>Подтяните грамматику — пройдите темы, которые ещё не отмечены как верные</li>' : ''}
+          ${scores.vocab < 70 ? '<li>Расширяйте деловой словарь — продолжайте изучение слов дня</li>' : ''}
+          <li>Практикуйте устную речь ежедневно для большей уверенности</li>
+        </ul>
+      </div>`;
+    } else if (total >= 45) {
+      verdict = `<div class="verdict-box verdict-mid">
+        <strong>⚠️ Вы готовы частично (${total}%)</strong><br>
+        Рекомендуется иметь сценарий переговоров под рукой.<br>
+        <ul style="margin-top:8px;padding-left:18px;font-size:.9rem">
+          ${scores.speaking < 60 ? '<li>Главный приоритет — тренировка устной речи (40% итогового балла)</li>' : ''}
+          ${scores.grammar < 60 ? '<li>Проработайте грамматические темы с ошибками</li>' : ''}
+          ${scores.texts < 60 ? '<li>Изучите все 6 деловых текстов и сценок</li>' : ''}
+        </ul>
+      </div>`;
+    } else {
+      verdict = `<div class="verdict-box verdict-low">
+        <strong>❌ Пока не готовы к самостоятельным переговорам (${total}%)</strong><br>
+        Рекомендуется присутствие коллеги или переводчика.<br>
+        <ul style="margin-top:8px;padding-left:18px;font-size:.9rem">
+          <li>Сосредоточьтесь на тренировке устной речи — это 40% итогового балла</li>
+          <li>Изучите все 6 текстов и диалогов</li>
+          <li>Ежедневно работайте со словами дня</li>
+        </ul>
+      </div>`;
+    }
+  }
+
+  document.getElementById('mentor-verdict').innerHTML = verdict;
+
+  // Speaking phrases
+  renderSpeakingPhrases();
+
+  // Load API key if saved
+  const savedKey = load('api-key', '');
+  if (savedKey) document.getElementById('api-key-input').value = savedKey;
+}
+
+function calcMentorScores() {
+  const gs = getGrammarStats();
+  const tv = getTextsViewed();
+  const ss = getSpeakingScores();
+  const unk = getUnknownWords();
+
+  // Grammar: accuracy × 0.7 + coverage × 0.3
+  const grammarEntries = Object.values(gs);
+  const gramAccuracy = grammarEntries.length
+    ? grammarEntries.filter(s => s.lastOk).length / grammarEntries.length
+    : 0;
+  const gramCoverage = grammarEntries.length / GRAMMAR_TOPICS.length;
+  const grammar = Math.round((gramAccuracy * 0.7 + gramCoverage * 0.3) * 100);
+
+  // Vocab: fraction of all 60 vocab-day words NOT marked as unknown
+  const allVocabWords = VOCAB_SETS.flatMap(s => s.words);
+  const unknownInVocab = allVocabWords.filter(w => unk[w.en.toLowerCase()]).length;
+  const vocab = Math.round(((allVocabWords.length - unknownInVocab) / allVocabWords.length) * 100);
+
+  // Texts: fraction of 6 texts viewed
+  const texts = Math.round((Object.keys(tv).length / TEXTS.length) * 100);
+
+  // Speaking: avg score × 0.7 + coverage × 0.3
+  const speakEntries = Object.entries(ss);
+  const speakAvg = speakEntries.length
+    ? speakEntries.reduce((a, [, v]) => a + v, 0) / speakEntries.length
+    : 0;
+  const speakCov = speakEntries.length / SPEAKING_PHRASES.length;
+  const speaking = Math.round((speakAvg / 100 * 0.7 + speakCov * 0.3) * 100);
+
+  const total = Math.round(grammar * 0.25 + vocab * 0.20 + texts * 0.15 + speaking * 0.40);
+
+  return {grammar, vocab, texts, speaking, total};
+}
+
+// ==================== SPEAKING ====================
+function renderSpeakingPhrases() {
+  const ss = getSpeakingScores();
+  const container = document.getElementById('speaking-phrases');
+
+  const hasSR = 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window;
+  if (!hasSR) {
+    document.getElementById('speaking-support-msg').style.display = 'block';
+  }
+
+  container.innerHTML = SPEAKING_PHRASES.map((p, i) => {
+    const best = ss[i];
+    const bestHtml = best !== undefined
+      ? `<div class="phrase-result">Лучший результат: <span class="phrase-best">${best}%</span></div>`
+      : `<div class="phrase-result" style="color:#bbb">Ещё не пробовали</div>`;
+    return `<div class="phrase-card" id="phrase-card-${i}">
+      <div class="phrase-en">${p.en}</div>
+      <div class="phrase-ru">${p.ru}</div>
+      <div style="display:flex;align-items:center;gap:8px">
+        ${hasSR ? `<button class="btn btn-primary btn-sm" onclick="startSpeaking(${i})">🎙 Говорить</button>` : ''}
+        <div id="phrase-status-${i}" style="font-size:.82rem;color:var(--gray)"></div>
+      </div>
+      ${bestHtml}
+    </div>`;
+  }).join('');
+}
+
+let activeSR = null;
+function startSpeaking(idx) {
+  if (activeSR) { try { activeSR.stop(); } catch(e) {} }
+
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const sr = new SR();
+  activeSR = sr;
+  sr.lang = 'en-US';
+  sr.interimResults = false;
+
+  const card = document.getElementById('phrase-card-' + idx);
+  const status = document.getElementById('phrase-status-' + idx);
+  card.classList.add('recording');
+  status.textContent = '🔴 Слушаю...';
+
+  sr.onresult = function(e) {
+    const said = e.results[0][0].transcript.toLowerCase();
+    const ref = SPEAKING_PHRASES[idx].en.toLowerCase().replace(/[^a-z ]/g, '').split(' ');
+    const saidWords = said.replace(/[^a-z ]/g, '').split(' ');
+    const matches = ref.filter(w => saidWords.includes(w)).length;
+    const score = Math.round((matches / ref.length) * 100);
+
+    const ss = getSpeakingScores();
+    ss[idx] = Math.max(ss[idx] || 0, score);
+    store('speaking-scores', ss);
+
+    card.classList.remove('recording');
+    status.innerHTML = `Вы сказали: "<em>${said}</em>" — <strong style="color:${score>=70?'var(--green)':score>=40?'var(--gold)':'var(--red)'}">${score}%</strong>`;
+    renderSpeakingPhrases();
+    renderMentorScores();
+  };
+
+  sr.onerror = function(e) {
+    card.classList.remove('recording');
+    status.textContent = 'Ошибка: ' + e.error + '. Проверьте микрофон.';
+  };
+
+  sr.onend = function() {
+    card.classList.remove('recording');
+    activeSR = null;
+  };
+
+  sr.start();
+}
+
+function renderMentorScores() {
+  const scores = calcMentorScores();
+  // partial re-render of just the scores bars
+}
+
+// ==================== AI ANALYSIS ====================
+function saveApiKey() {
+  const key = document.getElementById('api-key-input').value;
+  store('api-key', key);
+}
+
+async function getAiAnalysis() {
+  const apiKey = document.getElementById('api-key-input').value.trim();
+  const resultEl = document.getElementById('ai-result');
+
+  if (!apiKey) {
+    resultEl.innerHTML = '<div style="color:var(--red);margin-top:10px">⚠️ Введите API-ключ GLM выше.</div>';
+    return;
+  }
+
+  const scores = calcMentorScores();
+  const gs = getGrammarStats();
+  const tv = getTextsViewed();
+  const ss = getSpeakingScores();
+  const unk = getUnknownWords();
+  const known = getKnownWords();
+
+  const gramDone = Object.keys(gs).length;
+  const gramOk = Object.values(gs).filter(s => s.lastOk).length;
+  const textsDone = Object.keys(tv).length;
+  const speakDone = Object.keys(ss).length;
+  const speakAvg = speakDone ? Math.round(Object.values(ss).reduce((a,b)=>a+b,0)/speakDone) : 0;
+
+  const statsText = `
+Статистика пользователя (сотрудник Казпочты, цель — деловые переговоры с иностранными партнёрами, B1):
+- Грамматика: ${gramOk} правильных из ${gramDone} пройденных тем (из 14 возможных). Итоговый балл: ${scores.grammar}%
+- Словарный запас: ${Object.keys(known).length} слов знает, ${Object.keys(unk).length} слов учит. Балл: ${scores.vocab}%
+- Деловые тексты и диалоги: открыто ${textsDone} из 6. Балл: ${scores.texts}%
+- Устная речь: попробовано ${speakDone} из 6 фраз, средний результат ${speakAvg}%. Балл: ${scores.speaking}%
+- Итоговая готовность к переговорам: ${scores.total}%
+  `.trim();
+
+  resultEl.innerHTML = '<div style="margin-top:10px;color:var(--gray)"><span class="spinner"></span>Анализирую...</div>';
+
+  try {
+    const resp = await fetch('https://open.bigmodel.cn/api/paas/v4/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + apiKey
+      },
+      body: JSON.stringify({
+        model: 'glm-4-flash',
+        max_tokens: 500,
+        messages: [
+          {
+            role: 'system',
+            content: 'Ты личный наставник по деловому английскому языку. Отвечай только на русском языке. Давай честные, конкретные и поддерживающие советы.'
+          },
+          {
+            role: 'user',
+            content: `Вот статистика ученика:\n\n${statsText}\n\nНапиши короткий (4–6 предложений) персональный разбор: готов ли человек вести деловые переговоры самостоятельно, каковы главные сильные стороны и 2–3 конкретных следующих шага.`
+          }
+        ]
+      })
+    });
+
+    const data = await resp.json();
+    if (data.choices && data.choices[0]) {
+      const text = data.choices[0].message.content;
+      resultEl.innerHTML = `<div class="ai-result">🤖 <strong>ИИ-наставник (GLM):</strong><br><br>${text.replace(/\n/g,'<br>')}</div>`;
+    } else if (data.error) {
+      resultEl.innerHTML = `<div style="color:var(--red);margin-top:10px">Ошибка API: ${data.error.message || JSON.stringify(data.error)}</div>`;
+    } else {
+      resultEl.innerHTML = `<div style="color:var(--red);margin-top:10px">Неожиданный ответ от API: ${JSON.stringify(data).slice(0,200)}</div>`;
+    }
+  } catch(e) {
+    resultEl.innerHTML = `<div style="color:var(--red);margin-top:10px">Ошибка запроса: ${e.message}. Проверьте API-ключ и подключение к интернету.</div>`;
+  }
+}
+
+// ==================== UTILS ====================
+function escHtml(s) {
+  return s.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+}
+
+// ==================== INIT ====================
+renderTab('home');
+</script>
+</body>
+</html>
